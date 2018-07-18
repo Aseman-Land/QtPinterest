@@ -1,0 +1,5 @@
+module Pinterest.Lists
+classname PinterestListsPlugin
+typeinfo plugins.qmltypes
+plugin declarative_pinterestlists
+depends Pinterest.Base 2.0

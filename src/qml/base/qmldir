@@ -1,0 +1,6 @@
+module Pinterest.Base
+classname PinterestBasePlugin
+typeinfo plugins.qmltypes
+plugin declarative_pinterestbase
+depends QtQuick 2.0
+depends QtGraphicalEffects 1.0
