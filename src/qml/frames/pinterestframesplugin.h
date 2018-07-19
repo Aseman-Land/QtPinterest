@@ -1,9 +1,9 @@
-#ifndef PINTERESTLISTSPLUGIN_H
-#define PINTERESTLISTSPLUGIN_H
+#ifndef PINTERESTFRAMESPLUGIN_H
+#define PINTERESTFRAMESPLUGIN_H
 
 #include <QQmlExtensionPlugin>
 
-class PinterestListsPlugin : public QQmlExtensionPlugin
+class PinterestFramesPlugin : public QQmlExtensionPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface")
@@ -13,4 +13,4 @@ public:
     void initializeEngine(QQmlEngine *engine, const char *uri);
 };
 
-#endif // PINTERESTLISTSPLUGIN_H
+#endif // PINTERESTFRAMESPLUGIN_H

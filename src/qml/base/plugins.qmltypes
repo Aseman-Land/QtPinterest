@@ -39,4 +39,18 @@ Module {
         Property { name: "source"; type: "QQmlComponent"; isPointer: true }
         Property { name: "object"; type: "QObject"; isReadonly: true; isPointer: true }
     }
+    Component {
+        prototype: "QQuickItem"
+        name: "Pinterest.Base/FastDropShadow 1.0"
+        exports: ["Pinterest.Base/FastDropShadow 1.0"]
+        exportMetaObjectRevisions: [0]
+        isComposite: true
+        defaultProperty: "data"
+        Property { name: "horizontalOffset"; type: "double" }
+        Property { name: "verticalOffset"; type: "double" }
+        Property { name: "cached"; type: "bool" }
+        Property { name: "radius"; type: "double" }
+        Property { name: "color"; type: "QColor" }
+        Property { name: "source"; type: "QVariant" }
+    }
 }

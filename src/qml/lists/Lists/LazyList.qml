@@ -81,6 +81,7 @@ PinterestItem {
         Item {
             width: proxy.object? proxy.object.width : 1
             height: proxy.object? proxy.object.height : 1
+            z: proxy.object? proxy.object.z : 0
 
             property int index: model.index
 

@@ -1,0 +1,5 @@
+module Pinterest.Frames
+classname PinterestFramesPlugin
+typeinfo plugins.qmltypes
+plugin declarative_pinterestframes
+depends Pinterest.Base 2.0
