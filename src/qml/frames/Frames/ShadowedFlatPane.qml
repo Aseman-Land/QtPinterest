@@ -8,13 +8,13 @@ Item {
     default property alias contentItem: scene.data
     property alias background: sceneRect.color
     property alias shadow: shdw.color
+    property alias radius: sceneRect.radius
 
     property real padding: 16 * PinterestGlobals.density
 
-    FastDropShadow {
+    FastRectengleShadow {
         id: shdw
-        anchors.fill: source
-        source: sceneMask
+        anchors.fill: sceneMask
         verticalOffset: 12 * sceneMask.ratio
         radius: 60 * sceneMask.ratio
         cached: true
@@ -25,13 +25,14 @@ Item {
     Item {
         id: sceneMask
         anchors.fill: parent
+        anchors.margins: 16 * sceneMask.ratio
 
         property real ratio: item.padding / 16
 
         Rectangle {
             id: sceneRect
             anchors.fill: parent
-            anchors.margins: 16 * sceneMask.ratio
+            radius: 5 * PinterestGlobals.density
         }
     }
 

@@ -18,4 +18,19 @@ Module {
         Property { name: "contentItem"; type: "QQuickListView"; isPointer: true }
         Property { name: "layoutDirection"; type: "int" }
     }
+    Component {
+        prototype: "QQuickItem"
+        name: "Pinterest.Lists/SuperDynamicHeader 1.0"
+        exports: ["Pinterest.Lists/SuperDynamicHeader 1.0"]
+        exportMetaObjectRevisions: [0]
+        isComposite: true
+        defaultProperty: "data"
+        Property { name: "view"; type: "QQuickListView"; isReadonly: true; isPointer: true }
+        Property { name: "masterHeader"; type: "QQuickItem"; isPointer: true }
+        Property { name: "masterHeaderHeight"; type: "double" }
+        Property { name: "masterHeaderMinimumHeight"; type: "double" }
+        Property { name: "subHeader"; type: "QQuickItem"; isPointer: true }
+        Property { name: "subHeaderHeight"; type: "double" }
+        Property { name: "subHeaderMinimumHeight"; type: "double" }
+    }
 }

@@ -9,7 +9,6 @@ Item {
     property real horizontalOffset
     property real verticalOffset
     property bool cached: false
-    property alias source: shadowArea.maskSource
 
     FastBlur {
         id: blur
@@ -27,24 +26,12 @@ Item {
         anchors.margins: -item.radius*2
         visible: false
 
-        Item {
+        Rectangle {
+            id: shadowMask
             width: item.width
             height: item.height
             anchors.centerIn: parent
-
-            OpacityMask {
-                id: shadowArea
-                anchors.fill: parent
-                source: shadowMask
-                cached: item.cached
-            }
-
-            Rectangle {
-                id: shadowMask
-                color: item.shadow
-                anchors.fill: parent
-                visible: false
-            }
+            color: item.shadow
         }
     }
 }
