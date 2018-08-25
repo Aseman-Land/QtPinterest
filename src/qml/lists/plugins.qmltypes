@@ -20,6 +20,26 @@ Module {
     }
     Component {
         prototype: "QQuickItem"
+        name: "Pinterest.Lists/RollerDoubleHeader 1.0"
+        exports: ["Pinterest.Lists/RollerDoubleHeader 1.0"]
+        exportMetaObjectRevisions: [0]
+        isComposite: true
+        defaultProperty: "data"
+        Property { name: "masterHeaderColor"; type: "QColor" }
+        Property { name: "subHeaderColor"; type: "QColor" }
+        Property { name: "subHeaderRadius"; type: "double" }
+        Property { name: "masterItem"; type: "QQuickItem"; isPointer: true }
+        Property { name: "subItem"; type: "QQuickItem"; isPointer: true }
+        Property { name: "view"; type: "QQuickListView"; isReadonly: true; isPointer: true }
+        Property { name: "masterHeader"; type: "QQuickItem"; isPointer: true }
+        Property { name: "masterHeaderHeight"; type: "double" }
+        Property { name: "masterHeaderMinimumHeight"; type: "double" }
+        Property { name: "subHeader"; type: "QQuickItem"; isPointer: true }
+        Property { name: "subHeaderHeight"; type: "double" }
+        Property { name: "subHeaderMinimumHeight"; type: "double" }
+    }
+    Component {
+        prototype: "QQuickItem"
         name: "Pinterest.Lists/SuperDynamicHeader 1.0"
         exports: ["Pinterest.Lists/SuperDynamicHeader 1.0"]
         exportMetaObjectRevisions: [0]
