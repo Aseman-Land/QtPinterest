@@ -8,6 +8,11 @@ Base.PinterestItem {
 
     default property alias contents: back.data
 
+    property Item delegateItem
+    property Component delegate
+
+    onDelegateChanged: if(delegateItem) delegateItem.destroy()
+
     property string title
     property alias color: back.color
 
@@ -29,8 +34,22 @@ Base.PinterestItem {
         clip: true
         visible: width > 0
 
-        property bool opened: true
+        property bool opened: false
         property bool inited: false
+
+        onOpenedChanged: initDelegate()
+        onInitedChanged: initDelegate()
+
+        function initDelegate() {
+            if(!delegate)
+                return
+            if(delegateItem)
+                return
+            if(!opened)
+                return
+
+            delegateItem = delegate.createObject(back)
+        }
 
         Behavior on width {
             NumberAnimation { easing.type: Easing.OutBack; duration: scene.inited? 300 : 0 }

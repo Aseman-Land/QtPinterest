@@ -30,6 +30,8 @@ Module {
         exportMetaObjectRevisions: [0]
         isComposite: true
         defaultProperty: "contents"
+        Property { name: "delegateItem"; type: "QQuickItem"; isPointer: true }
+        Property { name: "delegate"; type: "QQmlComponent"; isPointer: true }
         Property { name: "title"; type: "string" }
         Property { name: "font"; type: "QFont" }
         Property { name: "textColor"; type: "QColor" }
