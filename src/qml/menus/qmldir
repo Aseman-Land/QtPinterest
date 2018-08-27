@@ -1,0 +1,5 @@
+module Pinterest.Menus
+classname PinterestMenusPlugin
+typeinfo plugins.qmltypes
+plugin declarative_pinterestmenus
+depends Pinterest.Base 2.0

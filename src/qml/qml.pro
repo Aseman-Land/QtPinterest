@@ -3,4 +3,5 @@ CONFIG += ordered
 SUBDIRS = \
     base \
     lists \
-    frames
+    frames \
+    menus

@@ -30,6 +30,7 @@ Module {
         Property { name: "subHeaderRadius"; type: "double" }
         Property { name: "masterItem"; type: "QQuickItem"; isPointer: true }
         Property { name: "subItem"; type: "QQuickItem"; isPointer: true }
+        Property { name: "shadowColor"; type: "QColor" }
         Property { name: "view"; type: "QQuickListView"; isReadonly: true; isPointer: true }
         Property { name: "masterHeader"; type: "QQuickItem"; isPointer: true }
         Property { name: "masterHeaderHeight"; type: "double" }

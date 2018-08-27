@@ -1,0 +1,77 @@
+import QtQuick 2.0
+import Pinterest.Base 1.0 as Base
+
+Base.PinterestItem {
+    id: base
+    anchors.fill: parent
+    data: [scene]
+
+    default property alias contents: back.data
+
+    property string title
+    property alias color: back.color
+
+    property font font
+    property color textColor: "#333"
+
+    function init(opened) {
+        if(scene.inited)
+            return
+
+        scene.opened = opened
+        scene.inited = true
+    }
+
+    Item {
+        id: scene
+        width: opened? parent.width : 0
+        height: parent.height
+        clip: true
+        visible: width > 0
+
+        property bool opened: true
+        property bool inited: false
+
+        Behavior on width {
+            NumberAnimation { easing.type: Easing.OutBack; duration: scene.inited? 300 : 0 }
+        }
+
+        Rectangle {
+            id: back
+            width: base.width
+            height: base.height
+        }
+    }
+
+    function openFromLeft() {
+        scene.anchors.right = undefined
+        scene.anchors.left = base.left
+        back.anchors.right = undefined
+        back.anchors.left = scene.left
+        scene.opened = true
+    }
+
+    function openFromRight() {
+        scene.anchors.right = base.right
+        scene.anchors.left = undefined
+        back.anchors.right = scene.right
+        back.anchors.left = undefined
+        scene.opened = true
+    }
+
+    function closeToLeft() {
+        scene.anchors.right = undefined
+        scene.anchors.left = base.left
+        back.anchors.right = undefined
+        back.anchors.left = scene.left
+        scene.opened = false
+    }
+
+    function closeToRight() {
+        scene.anchors.right = base.right
+        scene.anchors.left = undefined
+        back.anchors.right = scene.right
+        back.anchors.left = undefined
+        scene.opened = false
+    }
+}

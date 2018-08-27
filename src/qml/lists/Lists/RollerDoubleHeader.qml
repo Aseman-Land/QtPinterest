@@ -3,10 +3,14 @@ import Pinterest.Base 1.0
 import Pinterest.Frames 1.0 as Frames
 
 SuperDynamicHeader {
+    id: superHeader
+    
     property color masterHeaderColor: "#0d80ec"
 
     property color subHeaderColor: "#ffffff"
     property real subHeaderRadius: 5*PinterestGlobals.density
+
+    property alias shadowColor: shadowPane.shadow
 
     property Item masterItem
     property Item subItem
@@ -44,6 +48,7 @@ SuperDynamicHeader {
     subHeaderMinimumHeight: 30*PinterestGlobals.density
     subHeader: Item {
         Frames.ShadowedFlatPane {
+            id: shadowPane
             anchors.horizontalCenter: parent.horizontalCenter
             width: parent.width + mainBackground.opacity * 40*PinterestGlobals.density
             height: 100*PinterestGlobals.density

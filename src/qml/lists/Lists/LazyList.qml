@@ -103,6 +103,8 @@ PinterestItem {
                 }
 
                 property real value: {
+                    if(prv.mouseIndex == -1)
+                        return 0
                     var baseIdx = prv.mouseIndex - index
                     var res = baseIdx * -Math.abs(prv.maxVelocity)/40
                     return res
@@ -130,7 +132,7 @@ PinterestItem {
 
     MouseArea {
         id: marea
-        visible: contentItem.flicking
+//        visible: contentItem.flicking
         anchors.fill: contentItem? contentItem : undefined
         onPressed: {
             var y = mouseY + contentItem.contentY
@@ -143,6 +145,8 @@ PinterestItem {
                 timer.stop()
                 prv.maxVelocity = 0
             }
+            else
+                prv.mouseIndex = -1
         }
     }
 }
