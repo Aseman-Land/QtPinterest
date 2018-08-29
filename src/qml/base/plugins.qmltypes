@@ -65,6 +65,7 @@ Module {
         Property { name: "cached"; type: "bool" }
         Property { name: "radius"; type: "double" }
         Property { name: "color"; type: "QColor" }
+        Property { name: "roundRadius"; type: "double" }
     }
     Component {
         prototype: "QObject"

@@ -41,7 +41,7 @@ Item {
 
             Rectangle {
                 id: shadowMask
-                color: item.shadow
+                color: "#333"
                 anchors.fill: parent
                 visible: false
             }

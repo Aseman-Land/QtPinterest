@@ -6,6 +6,7 @@ Item {
 
     property alias radius: blur.radius
     property alias color: shadowMask.color
+    property alias roundRadius: shadowMask.radius
     property real horizontalOffset
     property real verticalOffset
     property bool cached: false
@@ -31,7 +32,7 @@ Item {
             width: item.width
             height: item.height
             anchors.centerIn: parent
-            color: item.shadow
+            color: "#333"
         }
     }
 }
