@@ -24,7 +24,8 @@ Module {
         Property { name: "delegateItem"; type: "QQuickItem"; isPointer: true }
         Property { name: "animationDuration"; type: "int" }
         Property { name: "opened"; type: "bool" }
-        Property { name: "newRatio"; type: "double" }
+        Property { name: "ratio"; type: "double" }
+        Property { name: "easingType"; type: "int" }
         Property { name: "text"; type: "string" }
         Property { name: "font"; type: "QFont" }
         Property { name: "textColor"; type: "QColor" }

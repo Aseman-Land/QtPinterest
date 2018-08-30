@@ -45,22 +45,22 @@ SuperDynamicHeader {
         }
     }
     subHeaderHeight: 80*PinterestGlobals.density
-    subHeaderMinimumHeight: 30*PinterestGlobals.density
+    subHeaderMinimumHeight: 25*PinterestGlobals.density
     subHeader: Item {
         Frames.ShadowedFlatPane {
             id: shadowPane
             anchors.horizontalCenter: parent.horizontalCenter
             width: parent.width + mainBackground.opacity * 40*PinterestGlobals.density
-            height: 100*PinterestGlobals.density
+            height: 90*PinterestGlobals.density
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 20*PinterestGlobals.density
+            anchors.bottomMargin: 10*PinterestGlobals.density
             radius: subHeaderRadius * (1-mainBackground.opacity)
             background: subHeaderColor
 
             Item {
                 id: subScene
                 anchors.fill: parent
-                anchors.topMargin: mainBackground.opacity * 22*PinterestGlobals.density
+                anchors.topMargin: mainBackground.opacity * 2*PinterestGlobals.density
             }
         }
     }

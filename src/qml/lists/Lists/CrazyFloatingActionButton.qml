@@ -11,20 +11,22 @@ Base.PinterestItem {
     property alias font: txt.font
     property alias textColor: txt.color
     property real radius: 8*Base.PinterestGlobals.density
-    property real padding: 30*Base.PinterestGlobals.density
+    property real padding: 20*Base.PinterestGlobals.density
 
     property Flickable flickable
 
     property Component delegate
     property Item delegateItem
 
-    property int animationDuration: 400
+    property int animationDuration: 350
 
     property bool opened: false
-    property real newRatio: opened? 1 : 0
+    property real ratio: opened? 1 : 0
 
-    Behavior on newRatio {
-        NumberAnimation { easing.type: Easing.OutCubic; duration: animationDuration }
+    property int easingType: Easing.InOutSine
+
+    Behavior on ratio {
+        NumberAnimation { easing.type: easingType; duration: animationDuration }
     }
 
     Connections {
@@ -104,7 +106,7 @@ Base.PinterestItem {
             return fst + mid + sec
         }
         y: {
-            var sec = (parent.height - openedWidth - 20*Base.PinterestGlobals.density) * secondRatio
+            var sec = (parent.height - openedWidth - item.padding) * secondRatio
             var mid = (parent.height/2 + openedWidth/2 - closedWidth/2) * midRatio
             var fst = parent.height - closedWidth - 20*Base.PinterestGlobals.density
             var padY = flickConnection.paddingY
@@ -120,26 +122,26 @@ Base.PinterestItem {
         color: secondRatio? item.panelColor : item.color
 
         property real firstRatio: {
-            var ratio = 1 - newRatio*2
+            var ratio = 1 - item.ratio*2
             if(ratio < 0)
                 ratio = 0
             return ratio
         }
         property real midRatio: {
-            var ratio = newRatio*2
+            var ratio = item.ratio*2
             if(ratio > 1)
                 ratio = 1
             ratio -= secondRatio
             return ratio
         }
         property real secondRatio: {
-            var ratio = newRatio*2 - 1
+            var ratio = item.ratio*2 - 1
             if(ratio < 0)
                 ratio = 0
             return ratio
         }
 
-        property bool opened: item.opened || item.newRatio
+        property bool opened: item.opened || item.ratio
         property real openedWidth: Math.min(item.width, item.height) - item.padding
         property real closedWidth: 62 * Base.PinterestGlobals.density
         property bool inited: false
@@ -152,7 +154,7 @@ Base.PinterestItem {
         }
 
         Behavior on color {
-            ColorAnimation { easing.type: Easing.OutCubic; duration: animationDuration/2 }
+            ColorAnimation { easing.type: easingType; duration: animationDuration/2 }
         }
 
         Text {

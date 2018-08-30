@@ -30,7 +30,25 @@ Base.PinterestItem {
         if(!header)
             return 0
 
-        return (header.masterHeader.height - header.masterHeaderMinimumHeight) / (header.masterHeaderHeight - header.masterHeaderMinimumHeight)
+        var res = (header.masterHeader.height - header.masterHeaderMinimumHeight) / (header.masterHeaderHeight - header.masterHeaderMinimumHeight)
+        if(res < 0.0001)
+            res = 0
+        if(res > 0.9999)
+            res = 1
+        return res;
+    }
+
+    readonly property real subRatio: {
+        var header = listv.headerItem
+        if(!header)
+            return 0
+
+        var res = (header.subHeader.height - header.subHeaderMinimumHeight) / (header.subHeaderHeight - header.subHeaderMinimumHeight)
+        if(res < 0.0001)
+            res = 0
+        if(res > 0.9999)
+            res = 1
+        return res;
     }
 
     function floatingButtonToggle() {
@@ -54,7 +72,12 @@ Base.PinterestItem {
         }
         color: nvcListView.backgroundColor
 
-        property real scaleNumber: 1 - floatingBtn.newRatio/4
+        property real scaleNumber: {
+            var ratio = floatingBtn.ratio*2 - 1
+            if(ratio < 0)
+                ratio = 0
+            return 1 - ratio/4
+        }
 
         Lists.LazyList {
             id: llist
@@ -75,14 +98,6 @@ Base.PinterestItem {
 
                     subItem: nvcListView.subItem? nvcListView.subItem.createObject(superHeader) : null
                     subHeaderColor: nvcListView.backgroundColor
-//                    subHeader.opacity: {
-//                        if(nvcListView.ratio >= 0.5)
-//                            return 1
-//                        var res = 1-floatingBtn.newRatio*4
-//                        if(res < 0)
-//                            res = 0
-//                        return res
-//                    }
 
                     shadowColor: nvcListView.foregroundColor
                 }
@@ -126,7 +141,7 @@ Base.PinterestItem {
                     y: -listener.result.y + llistFrame.y
                     width: llistFrame.width
                     height: llistFrame.height
-                    radius: floatingBtn.newRatio? 64 : 0
+                    radius: floatingBtn.ratio? 64 : 0
                     source: llistFrame
                     cached: true
                     transform: Scale {
@@ -149,7 +164,7 @@ Base.PinterestItem {
                 anchors.fill: parent
                 source: blur
                 maskSource: mask
-                visible: floatingBtn.newRatio
+                visible: floatingBtn.ratio
                 cached: true
             }
 
