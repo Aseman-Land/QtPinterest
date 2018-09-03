@@ -58,6 +58,7 @@ Module {
         Property { name: "backgroundColor"; type: "QColor" }
         Property { name: "foregroundColor"; type: "QColor" }
         Property { name: "ratio"; type: "double"; isReadonly: true }
+        Property { name: "subRatio"; type: "double"; isReadonly: true }
         Property {
             name: "floatingButton"
             type: "CrazyFloatingActionButton_QMLTYPE_9"

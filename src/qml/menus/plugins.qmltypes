@@ -48,4 +48,26 @@ Module {
         Method { name: "closeToRight"; type: "QVariant" }
         Property { name: "layoutDirection"; type: "int" }
     }
+    Component {
+        prototype: "QQuickItem"
+        name: "Pinterest.Menus/FancySearchBar 1.0"
+        exports: ["Pinterest.Menus/FancySearchBar 1.0"]
+        exportMetaObjectRevisions: [0]
+        isComposite: true
+        defaultProperty: "data"
+        Property { name: "mainScene"; type: "QQuickItem"; isPointer: true }
+        Property { name: "mainList"; type: "QQuickItem"; isPointer: true }
+        Property { name: "opened"; type: "bool" }
+        Property { name: "ratio"; type: "double"; isReadonly: true }
+        Property { name: "keyword"; type: "string" }
+        Property { name: "toolbarHeight"; type: "double" }
+        Property { name: "toolbarTopMargin"; type: "double" }
+        Property { name: "searchBarButton"; type: "QQuickText"; isReadonly: true; isPointer: true }
+        Property { name: "clearButton"; type: "QQuickText"; isReadonly: true; isPointer: true }
+        Property { name: "panelColor"; type: "QColor" }
+        Property { name: "searchBarColor"; type: "QColor" }
+        Property { name: "textInput"; type: "QQuickTextInput"; isReadonly: true; isPointer: true }
+        Property { name: "placeholder"; type: "string" }
+        Property { name: "layoutDirection"; type: "int" }
+    }
 }
