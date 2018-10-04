@@ -8,7 +8,7 @@ Item {
     property alias color: shadowMask.color
     property real horizontalOffset
     property real verticalOffset
-    property bool cached: false
+    property bool cached: true
     property alias source: shadowArea.maskSource
 
     FastBlur {

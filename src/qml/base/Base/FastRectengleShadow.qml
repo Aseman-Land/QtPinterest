@@ -9,7 +9,7 @@ Item {
     property alias roundRadius: shadowMask.radius
     property real horizontalOffset
     property real verticalOffset
-    property bool cached: false
+    property bool cached: true
 
     FastBlur {
         id: blur
