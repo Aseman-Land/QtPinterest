@@ -16,6 +16,7 @@ Base.PinterestItem {
 
     property alias floatingButton: floatingBtn
     property alias floatingButtonOpened: floatingBtn.opened
+    property bool panelBlur: true
 
     property alias view: listv
     property alias maximumFlickVelocity: listv.maximumFlickVelocity
@@ -141,9 +142,10 @@ Base.PinterestItem {
                     y: -listener.result.y + llistFrame.y
                     width: llistFrame.width
                     height: llistFrame.height
-                    radius: floatingBtn.ratio? 64 : 0
+                    radius: floatingBtn.ratio && panelBlur? 64 : 0
                     source: llistFrame
                     cached: true
+                    visible: panelBlur
                     transform: Scale {
                         xScale: llistFrame.scaleNumber
                         yScale: llistFrame.scaleNumber

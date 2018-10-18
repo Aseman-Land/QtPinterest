@@ -11,7 +11,11 @@ Base.PinterestItem {
     property alias font: txt.font
     property alias textColor: txt.color
     property real radius: 8*Base.PinterestGlobals.density
-    property real padding: 20*Base.PinterestGlobals.density
+    property real horizontalPadding: 20*Base.PinterestGlobals.density
+    property real verticalPadding: 20*Base.PinterestGlobals.density
+
+    property int horizontalAlignment: layoutDirection==Qt.LeftToRight? Qt.AlignRight : Qt.AlignRight
+    property real panelHeight: btn.openedWidth
 
     property Flickable flickable
 
@@ -102,12 +106,27 @@ Base.PinterestItem {
             var sec = (parent.width/2 - openedWidth/2) * secondRatio
             var mid = (parent.width/2 - closedWidth/2) * midRatio
             var defaultLayout = (item.layoutDirection == Qt.LeftToRight)
-            var fst = (defaultLayout? parent.width - closedWidth - 20*Base.PinterestGlobals.density : 20*Base.PinterestGlobals.density) * firstRatio
+            var fst = 0
+            switch(horizontalAlignment) {
+            case Qt.AlignLeft:
+                fst = 20*Base.PinterestGlobals.density
+                break;
+            case Qt.AlignHCenter:
+            case Qt.AlignCenter:
+                fst = parent.width/2 - width/2
+                break;
+            default:
+            case Qt.AlignRight:
+                fst = parent.width - closedWidth - 20*Base.PinterestGlobals.density
+                break;
+            }
+            fst = fst*firstRatio
+
             return fst + mid + sec
         }
         y: {
-            var sec = (parent.height - openedWidth - item.padding) * secondRatio
-            var mid = (parent.height/2 + openedWidth/2 - closedWidth/2) * midRatio
+            var sec = (parent.height - panelHeight - item.verticalPadding) * secondRatio
+            var mid = (parent.height - panelHeight/2 - closedWidth/2) * midRatio
             var fst = parent.height - closedWidth - 20*Base.PinterestGlobals.density
             var padY = flickConnection.paddingY
             if(padY < 0)
@@ -117,7 +136,7 @@ Base.PinterestItem {
             return fst + mid + sec
         }
         width: secondRatio*openedWidth + (1-secondRatio)*closedWidth
-        height: secondRatio*openedWidth + (1-secondRatio)*closedWidth
+        height: secondRatio*panelHeight + (1-secondRatio)*closedWidth
         radius: secondRatio*item.radius + (1-secondRatio)*closedWidth/2
         color: secondRatio? item.panelColor : item.color
 
@@ -142,7 +161,7 @@ Base.PinterestItem {
         }
 
         property bool opened: item.opened || item.ratio
-        property real openedWidth: Math.min(item.width, item.height) - item.padding
+        property real openedWidth: Math.min(item.width, item.height) - item.horizontalPadding*2
         property real closedWidth: 62 * Base.PinterestGlobals.density
         property bool inited: false
 
@@ -178,7 +197,7 @@ Base.PinterestItem {
         Item {
             id: scene
             width: btn.openedWidth
-            height: btn.openedWidth
+            height: panelHeight
             anchors.centerIn: parent
             visible: opacity > 0
             opacity: {
