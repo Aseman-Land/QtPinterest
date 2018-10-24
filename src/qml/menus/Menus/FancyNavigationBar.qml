@@ -3,7 +3,7 @@ import Pinterest.Base 1.0 as Base
 
 Base.PinterestItem {
     id: navigBar
-    data: [back]
+    data: [back, bar]
 
     property alias color: back.color
     default property alias contents: back.data
@@ -37,9 +37,9 @@ Base.PinterestItem {
 
     Item {
         id: bar
-        width: parent.width
+        width: navigBar.width
         height: 50 * Base.PinterestGlobals.density
-        anchors.bottom: parent.bottom
+        anchors.bottom: navigBar.bottom
 
         property real normalWidth: back.currentIndex>=0? bar.height*1.2 : bar.width / navigBar.count
         property real selectedWidth: bar.width - normalWidth*(navigBar.count-1)
